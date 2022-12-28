@@ -9,16 +9,16 @@ router = APIRouter(
 
 
 @router.get("/name/{name}")
-async def get_pokemon_by_name(name: str):
+async def get_pokemon_by_name(name: str) -> dict:
     try:
-        return pokedex_service.get_pokemon_by_name(name).json()
+        return pokedex_service.get_pokemon_by_name(name)
     except Exception:
         raise
 
 
 @router.get("/id/{id}")
-async def get_pokemon_by_id(id: int):
+async def get_pokemon_by_id(id: int) -> dict:
     try:
-        return pokedex_service.get_pokemon_by_id(id).json()
+        return pokedex_service.get_pokemon_by_id(id)
     except Exception:
         raise

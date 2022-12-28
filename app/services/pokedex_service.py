@@ -1,9 +1,10 @@
 import requests
 import json
+
 from requests import Response
 
 
-def get_pokemon_by_name(name: str) -> Response:
+def get_pokemon_by_name(name: str) -> dict:
     try:
         # call db
         # if exists return json as dict
@@ -12,14 +13,14 @@ def get_pokemon_by_name(name: str) -> Response:
         # response.json() is a python dict
         # json.dumps(dict, indentation)
         pokemon = response.json()
-        return response
+        return pokemon
     except Exception:
         raise
 
 
-def get_pokemon_by_id(id: int) -> Response:
+def get_pokemon_by_id(id: int) -> dict:
     try:
-        return _pokemon_by_id(id=id)
+        return _pokemon_by_id(id=id).json()
     except Exception:
         raise
 
@@ -40,7 +41,10 @@ def _pokemon_api_by_name(name: str) -> Response:
             url=url,
             timeout=30,
         )
+        response.raise_for_status()
         return response
+    except requests.exceptions.HTTPError as exp:
+        return {"HTTPError": exp}
     except requests.exceptions.SSLError as exp:
         return {"SSLError": exp}
     except requests.exceptions.Timeout as exp:
@@ -67,7 +71,10 @@ def _pokemon_by_id(id: int) -> Response:
             url=url,
             timeout=30,
         )
+        response.raise_for_status()
         return response
+    except requests.exceptions.HTTPError as exp:
+        return {"HTTPError": exp}
     except requests.exceptions.SSLError as exp:
         return {"SSLError": exp}
     except requests.exceptions.Timeout as exp:
