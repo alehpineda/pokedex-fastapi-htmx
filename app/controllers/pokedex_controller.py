@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-
 from services import pokedex_service
 
 router = APIRouter(

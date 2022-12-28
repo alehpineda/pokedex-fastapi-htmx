@@ -1,6 +1,5 @@
-from fastapi import FastAPI
-
 from controllers import pokedex_controller
+from fastapi import FastAPI
 
 app = FastAPI()
 
