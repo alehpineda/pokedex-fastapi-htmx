@@ -1,0 +1,10 @@
+fastapi
+sqlmodel
+requests
+uvicorn
+pytest
+black
+pre-commit
+pylint
+flake8
+isort
