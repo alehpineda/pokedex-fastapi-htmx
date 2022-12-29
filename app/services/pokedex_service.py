@@ -1,5 +1,3 @@
-import json
-
 import requests
 from dao.pokedex_dao import PokedexDao
 from fastapi import HTTPException

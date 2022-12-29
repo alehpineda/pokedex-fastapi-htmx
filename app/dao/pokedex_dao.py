@@ -1,7 +1,6 @@
 import json
 
 from config.db_config import DatabaseConfig
-from entities.pokedex import Pokedex
 from repositories.pokedex_repository import PokedexRepository
 
 
