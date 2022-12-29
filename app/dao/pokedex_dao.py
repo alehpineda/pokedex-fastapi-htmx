@@ -21,7 +21,9 @@ class PokedexDao:
     @classmethod
     def select_pokemon_by_id(cls, id: int) -> dict:
         results = PokedexRepository.select_pokemon_by_id(engine=cls.engine, id=id)
-        return json.loads(results[0].api_response)
+        if results:
+            return json.loads(results[0].api_response)
+        return {}
 
     @classmethod
     def save_pokemon(cls, pokemon: dict) -> dict:

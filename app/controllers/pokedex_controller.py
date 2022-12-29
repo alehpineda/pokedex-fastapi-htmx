@@ -1,6 +1,5 @@
 import requests
 from fastapi import APIRouter, HTTPException
-
 from services.pokedex_service import PokedexService
 
 router = APIRouter(

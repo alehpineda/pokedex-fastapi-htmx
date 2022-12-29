@@ -1,11 +1,10 @@
 import json
 from typing import List
 
+from entities.pokedex import Pokedex
 from sqlalchemy.engine import Engine
 from sqlalchemy.exc import IntegrityError
 from sqlmodel import Session, select
-
-from entities.pokedex import Pokedex
 
 
 class PokedexRepository:

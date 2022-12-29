@@ -1,10 +1,8 @@
 import json
 
 import requests
-from fastapi import HTTPException
-from requests import Response
-
 from dao.pokedex_dao import PokedexDao
+from fastapi import HTTPException
 
 
 class PokedexService:
@@ -14,16 +12,21 @@ class PokedexService:
             result = PokedexDao.select_pokemon_by_name(name=name)
             if result.get("name", None):
                 return result
-            else:
-                pokemon = cls._pokemon_api_by_name(name=name)
-                return PokedexDao.save_pokemon(pokemon=pokemon)
+            pokemon = cls._pokemon_api_by_name(name=name)
+            return PokedexDao.save_pokemon(pokemon=pokemon)
+
         except Exception:
             raise
 
     @classmethod
     def get_pokemon_by_id(cls, id: int) -> dict:
         try:
-            return cls._pokemon_by_id(id=id).json()
+            result = PokedexDao.select_pokemon_by_id(id=id)
+            if result.get("id", None):
+                return result
+            pokemon = cls._pokemon_by_id(id=id)
+            return PokedexDao.save_pokemon(pokemon=pokemon)
+
         except Exception:
             raise
 
@@ -58,7 +61,7 @@ class PokedexService:
             raise HTTPException(status_code=response.status_code, detail=f"{err}")
 
     @staticmethod
-    def _pokemon_by_id(id: int) -> Response:
+    def _pokemon_by_id(id: int) -> dict:
         """
         Makes a GET request to the PokeAPI using the provided ID to retrieve information about a Pokemon.
 
