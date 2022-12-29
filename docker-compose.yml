@@ -1,7 +1,7 @@
 version: "3.9"
 services:
 
-  memd-api-py:
+  pokedex-api:
     build: .
     ports:
       - "80:80"

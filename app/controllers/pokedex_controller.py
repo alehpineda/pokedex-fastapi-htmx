@@ -1,5 +1,7 @@
-from fastapi import APIRouter
-from services import pokedex_service
+import requests
+from fastapi import APIRouter, HTTPException
+
+from services.pokedex_service import PokedexService
 
 router = APIRouter(
     prefix="/pokedex",
@@ -10,7 +12,7 @@ router = APIRouter(
 @router.get("/name/{name}")
 async def get_pokemon_by_name(name: str) -> dict:
     try:
-        return pokedex_service.get_pokemon_by_name(name)
+        return PokedexService.get_pokemon_by_name(name=name)
     except Exception:
         raise
 
@@ -18,6 +20,6 @@ async def get_pokemon_by_name(name: str) -> dict:
 @router.get("/id/{id}")
 async def get_pokemon_by_id(id: int) -> dict:
     try:
-        return pokedex_service.get_pokemon_by_id(id)
+        return PokedexService.get_pokemon_by_id(id=id)
     except Exception:
         raise
