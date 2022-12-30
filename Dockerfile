@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye as build
+FROM python:3.11-slim-bullseye as build
 LABEL maintainer="Alex Pineda"
 
 RUN apt-get update
@@ -11,7 +11,7 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 
 
-FROM python:3.10-slim-bullseye
+FROM python:3.11-slim-bullseye
 LABEL maintainer="Alex Pineda"
 
 RUN groupadd -g 69420 python && \
