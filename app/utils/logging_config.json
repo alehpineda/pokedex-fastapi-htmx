@@ -1,0 +1,9 @@
+{
+    "logger": {
+      "filepath": "logs/logger.log",
+      "level": "info",
+      "rotation": "1 day",
+      "retention": "7 days",
+      "format": "<green>{time:YYYY-MM-DD HH:mm:ss.SSS}</green> <level>{level: <8}</level> request id: {extra[request_id]} - <cyan>{name}</cyan>:<cyan>{function}</cyan> - <level>{message}</level>"
+    }
+}

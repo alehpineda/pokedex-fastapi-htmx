@@ -2,6 +2,7 @@ fastapi
 sqlmodel
 requests
 uvicorn
+loguru
 pytest
 black
 pre-commit
