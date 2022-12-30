@@ -6,6 +6,6 @@ app = FastAPI()
 app.include_router(pokedex_controller.router)
 
 
-@app.get("/")
+@app.get("/health")
 async def root():
     return {"message": "Pokedex App Online!"}

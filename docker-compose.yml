@@ -4,7 +4,7 @@ services:
   pokedex-api:
     build: .
     ports:
-      - "80:80"
+      - "8080:80"
     deploy:
       restart_policy:
         condition: on-failure
